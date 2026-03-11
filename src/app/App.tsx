@@ -1,5 +1,5 @@
-import { EmailTemplatesPreview } from "./components/EmailTemplatesPreview";
+import { LandingPage } from "./components/LandingPage";
 
 export default function App() {
-  return <EmailTemplatesPreview />;
+  return <LandingPage />;
 }
