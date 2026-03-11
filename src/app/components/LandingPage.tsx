@@ -244,7 +244,7 @@ export function LandingPage() {
               <a href="#pricing" className="nav-link" style={{ fontSize: 14, color: C.muted, textDecoration: "none" }}>
                 Тарифы
               </a>
-              <button className="btn-primary" style={{
+              <a href="http://5.42.112.231/login" className="btn-primary" style={{
                 background: C.cyan,
                 color: C.ink,
                 border: "none",
@@ -253,10 +253,11 @@ export function LandingPage() {
                 fontSize: 14,
                 fontWeight: 600,
                 cursor: "pointer",
+                textDecoration: "none",
               }}
               >
                 Войти
-              </button>
+              </a>
             </nav>
           </div>
         </header>
@@ -496,9 +497,9 @@ export function LandingPage() {
               gap: 16,
             }}>
               <span>Информация о сообществе будет сообщена позже</span>
-              <a 
-                href="https://t.me/mestox_community" 
-                target="_blank" 
+              <a
+                href="https://t.me/+oZyghIJR2L8yYTAy"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary"
                 style={{
@@ -517,8 +518,10 @@ export function LandingPage() {
                   whiteSpace: "nowrap",
                 }}
               >
-                <span style={{ fontSize: 16 }}>📢</span>
-                Подписаться
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style={{ flexShrink: 0 }}>
+                  <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                </svg>
+                Вступить в сообщество
               </a>
             </div>
           </div>
@@ -996,23 +999,46 @@ export function LandingPage() {
                 <h4 style={{ fontSize: 13, fontWeight: 600, marginBottom: 16, color: C.white }}>
                   Сообщество
                 </h4>
-                <a 
-                  href="https://t.me/mestox_community" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="footer-link"
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 8,
-                    fontSize: 13,
-                    color: C.muted,
-                    textDecoration: "none",
-                  }}
-                >
-                  <span style={{ fontSize: 16 }}>📢</span>
-                  Подписаться
-                </a>
+                <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                  <a
+                    href="https://t.me/+oZyghIJR2L8yYTAy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="footer-link"
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 8,
+                      fontSize: 13,
+                      color: C.muted,
+                      textDecoration: "none",
+                    }}
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style={{ flexShrink: 0 }}>
+                      <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                    </svg>
+                    Сообщество mestoX
+                  </a>
+                  <a
+                    href="https://t.me/mestox_bot"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="footer-link"
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 8,
+                      fontSize: 13,
+                      color: C.muted,
+                      textDecoration: "none",
+                    }}
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style={{ flexShrink: 0 }}>
+                      <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                    </svg>
+                    Поддержка @mestox_bot
+                  </a>
+                </div>
               </div>
             </div>
 
