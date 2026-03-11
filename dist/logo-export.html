@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mestoX Logo</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 40px;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .label {
+      font-size: 14px;
+      color: #666;
+      font-weight: 600;
+    }
+    .instructions {
+      max-width: 600px;
+      padding: 20px;
+      background: #f5f5f5;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #333;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="instructions">
+    <strong>Инструкция:</strong><br>
+    Кликните правой кнопкой мыши на логотип → "Сохранить изображение как..." или сделайте скриншот нужного размера.
+  </div>
+
+  <!-- 512x512 -->
+  <div class="logo-container">
+    <div class="label">512 × 512 px</div>
+    <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="512" height="512" rx="102.4" fill="#0D0F14" />
+      <line
+        x1="122.88" y1="122.88" x2="389.12" y2="389.12"
+        stroke="#FFFFFF" stroke-width="58.88" stroke-linecap="round"
+      />
+      <line
+        x1="389.12" y1="122.88" x2="122.88" y2="389.12"
+        stroke="#FFFFFF" stroke-width="58.88" stroke-linecap="round"
+      />
+      <circle cx="256" cy="256" r="36.864" fill="#06B6D4" />
+    </svg>
+  </div>
+
+  <!-- 1024x1024 -->
+  <div class="logo-container">
+    <div class="label">1024 × 1024 px</div>
+    <svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="1024" height="1024" rx="204.8" fill="#0D0F14" />
+      <line
+        x1="245.76" y1="245.76" x2="778.24" y2="778.24"
+        stroke="#FFFFFF" stroke-width="117.76" stroke-linecap="round"
+      />
+      <line
+        x1="778.24" y1="245.76" x2="245.76" y2="778.24"
+        stroke="#FFFFFF" stroke-width="117.76" stroke-linecap="round"
+      />
+      <circle cx="512" cy="512" r="73.728" fill="#06B6D4" />
+    </svg>
+  </div>
+
+  <!-- 256x256 -->
+  <div class="logo-container">
+    <div class="label">256 × 256 px</div>
+    <svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="256" height="256" rx="51.2" fill="#0D0F14" />
+      <line
+        x1="61.44" y1="61.44" x2="194.56" y2="194.56"
+        stroke="#FFFFFF" stroke-width="29.44" stroke-linecap="round"
+      />
+      <line
+        x1="194.56" y1="61.44" x2="61.44" y2="194.56"
+        stroke="#FFFFFF" stroke-width="29.44" stroke-linecap="round"
+      />
+      <circle cx="128" cy="128" r="18.432" fill="#06B6D4" />
+    </svg>
+  </div>
+
+  <!-- На темном фоне -->
+  <div class="logo-container" style="background: #0D0F14; padding: 40px; border-radius: 16px;">
+    <div class="label" style="color: #fff;">На темном фоне (512 × 512 px)</div>
+    <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="512" height="512" rx="102.4" fill="#0D0F14" />
+      <line
+        x1="122.88" y1="122.88" x2="389.12" y2="389.12"
+        stroke="#FFFFFF" stroke-width="58.88" stroke-linecap="round"
+      />
+      <line
+        x1="389.12" y1="122.88" x2="122.88" y2="389.12"
+        stroke="#FFFFFF" stroke-width="58.88" stroke-linecap="round"
+      />
+      <circle cx="256" cy="256" r="36.864" fill="#06B6D4" />
+    </svg>
+  </div>
+
+  <!-- Прозрачный фон (только символ без фона) -->
+  <div class="logo-container" style="background: repeating-conic-gradient(#ddd 0% 25%, transparent 0% 50%) 50% / 20px 20px;">
+    <div class="label">Только символ X на прозрачном фоне (512 × 512 px)</div>
+    <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line
+        x1="122.88" y1="122.88" x2="389.12" y2="389.12"
+        stroke="#FFFFFF" stroke-width="58.88" stroke-linecap="round"
+      />
+      <line
+        x1="389.12" y1="122.88" x2="122.88" y2="389.12"
+        stroke="#FFFFFF" stroke-width="58.88" stroke-linecap="round"
+      />
+      <circle cx="256" cy="256" r="36.864" fill="#06B6D4" />
+    </svg>
+  </div>
+
+</body>
+</html>
