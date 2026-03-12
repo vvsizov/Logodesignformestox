@@ -203,8 +203,12 @@ export function LandingPage() {
     { name: "Ozon", status: "soon" as const },
     { name: "X5", status: "soon" as const },
     { name: "Torg Trans", status: "soon" as const },
-    { name: "Газпромнефть снабжение", status: "soon" as const },
+    { name: "Express Isource", status: "soon" as const },
     { name: "Умная Логистика", status: "soon" as const },
+    { name: "CargoMart", status: "soon" as const },
+    { name: "Loginet", status: "soon" as const },
+    { name: "Trucker", status: "soon" as const },
+    { name: "Logist Pro", status: "soon" as const },
   ];
 
   return (
@@ -376,7 +380,7 @@ export function LandingPage() {
               maxWidth: 700,
               margin: "0 auto",
             }}>
-              {tmsSystems.slice(0, 8).map(tms => (
+              {tmsSystems.map(tms => (
                 <TmsBadge key={tms.name} label={tms.name} />
               ))}
             </div>
