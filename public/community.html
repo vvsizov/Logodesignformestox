@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Сообщество X — mestoX</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #0D0F14;
+      color: #C8CDD8;
+      line-height: 1.7;
+    }
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13,15,20,0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      padding: 16px 24px;
+    }
+    .header-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #fff;
+    }
+    .logo-text {
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: -0.035em;
+      color: #fff;
+    }
+    .logo-text span { color: #06B6D4; }
+    .back-link {
+      font-size: 13px;
+      color: #8892A4;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: #fff; }
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 60px 24px 100px;
+    }
+    h1 {
+      font-size: 36px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+    .subtitle {
+      font-size: 18px;
+      color: #8892A4;
+      margin-bottom: 48px;
+      line-height: 1.6;
+    }
+    h2 {
+      font-size: 20px;
+      font-weight: 600;
+      color: #FFFFFF;
+      margin-top: 40px;
+      margin-bottom: 16px;
+    }
+    h3 {
+      font-size: 17px;
+      font-weight: 600;
+      color: #E2E8F0;
+      margin-top: 28px;
+      margin-bottom: 12px;
+    }
+    p { margin-bottom: 16px; }
+    ul {
+      margin-bottom: 16px;
+      padding-left: 24px;
+    }
+    li { margin-bottom: 8px; }
+    a { color: #06B6D4; }
+    .highlight {
+      color: #FFFFFF;
+      font-weight: 500;
+    }
+    .card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin: 20px 0;
+    }
+    .card h3 {
+      margin-top: 0;
+      color: #06B6D4;
+    }
+    .steps {
+      counter-reset: step;
+      list-style: none;
+      padding-left: 0;
+    }
+    .steps li {
+      counter-increment: step;
+      padding-left: 36px;
+      position: relative;
+      margin-bottom: 12px;
+    }
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 2px;
+      width: 24px;
+      height: 24px;
+      background: rgba(6,182,212,0.15);
+      color: #06B6D4;
+      border-radius: 50%;
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+    .cta-block {
+      background: linear-gradient(135deg, rgba(6,182,212,0.08) 0%, rgba(37,99,235,0.08) 100%);
+      border: 1px solid rgba(6,182,212,0.2);
+      border-radius: 16px;
+      padding: 40px 32px;
+      margin-top: 48px;
+      text-align: center;
+    }
+    .cta-block h2 {
+      margin-top: 0;
+      font-size: 24px;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #06B6D4;
+      color: #0D0F14;
+      text-decoration: none;
+      padding: 14px 32px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .cta-btn:hover {
+      background: #08d4f0;
+      transform: scale(1.02);
+      color: #0D0F14;
+    }
+    .note {
+      background: rgba(37,99,235,0.08);
+      border-left: 3px solid #2563EB;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: 14px;
+    }
+    .flow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .flow-step {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 8px 16px;
+      color: #E2E8F0;
+      font-weight: 500;
+    }
+    .flow-arrow {
+      color: #06B6D4;
+      font-size: 18px;
+    }
+    .footer {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 32px 24px;
+      text-align: center;
+      font-size: 12px;
+      color: #8892A4;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="/" class="logo-link">
+        <svg width="32" height="32" viewBox="0 0 64 64" fill="none">
+          <rect width="64" height="64" rx="12.8" fill="#0D0F14" />
+          <line x1="15.36" y1="15.36" x2="48.64" y2="48.64" stroke="#FFFFFF" stroke-width="7.36" stroke-linecap="round" />
+          <line x1="48.64" y1="15.36" x2="15.36" y2="48.64" stroke="#FFFFFF" stroke-width="7.36" stroke-linecap="round" />
+          <circle cx="32" cy="32" r="4.608" fill="#06B6D4" />
+        </svg>
+        <div class="logo-text">mesto<span>X</span></div>
+      </a>
+      <a href="/" class="back-link">&larr; На главную</a>
+    </div>
+  </header>
+
+  <main class="content">
+    <h1>Сообщество X</h1>
+    <p class="subtitle">Пространство, где экспедиторы создают инструменты для своей работы</p>
+
+    <p>Добро пожаловать в сообщество X.</p>
+    <p>Сообщество X объединяет людей, которые хотят участвовать в создании новой цифровой платформы для экспедиторов.</p>
+    <p>Это пространство, где участники могут не только пользоваться продуктом, но и <span class="highlight">влиять на его развитие</span>.</p>
+    <p>mestoX создаётся по принципу открытого развития: экспедиторы предлагают идеи, сообщество определяет приоритеты, а технологии и искусственный интеллект помогают быстрее превращать идеи в работающие решения.</p>
+
+    <h2>Модель участия</h2>
+    <p>Сегодня модель сообщества проста и включает два уровня.</p>
+
+    <div class="card">
+      <h3>Пользователь</h3>
+      <p>Пользователь — это любой зарегистрированный участник платформы.</p>
+      <p>Пользователи могут:</p>
+      <ul>
+        <li>использовать платформу</li>
+        <li>давать обратную связь</li>
+        <li>предлагать идеи и пожелания через <a href="https://t.me/mestox_bot" target="_blank">@mestox_bot</a></li>
+      </ul>
+      <p>Все предложения фиксируются и учитываются при развитии платформы.</p>
+    </div>
+
+    <div class="card">
+      <h3>Участник сообщества X</h3>
+      <p>Участники — это активные члены сообщества, которые принимают участие в развитии продукта.</p>
+      <p>Участники могут:</p>
+      <ul>
+        <li>пользоваться платформой</li>
+        <li>предлагать идеи</li>
+        <li>участвовать в обсуждениях</li>
+        <li>голосовать за приоритеты разработки</li>
+      </ul>
+      <p>Именно участники сообщества определяют, какой функционал будет реализован в первую очередь.</p>
+    </div>
+
+    <h2>Будущее сообщества</h2>
+    <p>По мере развития платформы появится ещё один уровень участия.</p>
+
+    <div class="card">
+      <h3>Разработчик</h3>
+      <p>Разработчики смогут напрямую участвовать в развитии платформы:</p>
+      <ul>
+        <li>создавать новые модули</li>
+        <li>предлагать технические решения</li>
+        <li>участвовать в развитии архитектуры продукта</li>
+      </ul>
+      <p>Таким образом платформа будет развиваться не только командой проекта, но и самим сообществом.</p>
+    </div>
+
+    <h2>Как развивается платформа</h2>
+    <p>Развитие платформы происходит по простой модели:</p>
+
+    <div class="flow">
+      <span class="flow-step">Идея</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-step">Обсуждение</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-step">Голосование</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-step">Разработка</span>
+    </div>
+
+    <ol class="steps">
+      <li>Пользователи предлагают идеи.</li>
+      <li>Сообщество обсуждает предложения.</li>
+      <li>Участники голосуют за приоритеты.</li>
+      <li>Самые поддержанные идеи попадают в разработку.</li>
+    </ol>
+
+    <p>Так формируется открытая и прозрачная модель развития продукта.</p>
+
+    <h2>Наша цель</h2>
+    <p>Мы создаём платформу, которая развивается вместе с отраслью.</p>
+    <p>mestoX — это не просто программный продукт. Это <span class="highlight">профессиональное сообщество</span>, где экспедиторы могут формировать инструменты для своей работы и вместе создавать новые стандарты цифровой логистики.</p>
+    <p>Чем больше участников присоединяется к сообществу, тем выше качество решений и тем богаче функциональность платформы.</p>
+
+    <div class="note">
+      <strong>Важно:</strong> Сегодня любой пользователь может стать участником сообщества X. Однако по мере развития проекта участие в сообществе станет платным, чтобы сохранить высокий уровень вовлечённости и качества обсуждений.
+    </div>
+
+    <div class="cta-block">
+      <h2>Присоединяйтесь к сообществу</h2>
+      <p style="color: #8892A4; margin-bottom: 24px;">Участвуйте в развитии платформы, предлагайте идеи и голосуйте за приоритеты</p>
+      <a href="https://t.me/+oZyghIJR2L8yYTAy" target="_blank" class="cta-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z" fill="#0D0F14"/>
+        </svg>
+        Вступить в сообщество
+      </a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    &copy; 2026 mestoX. Все права защищены.
+  </footer>
+</body>
+</html>

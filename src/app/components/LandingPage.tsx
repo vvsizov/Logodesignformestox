@@ -195,15 +195,16 @@ function FeatureCard({ icon, title, description }: { icon: string; title: string
 
 export function LandingPage() {
   const [email, setEmail] = useState("");
+  const [ctaEmail, setCtaEmail] = useState("");
 
   const tmsSystems = [
-    { name: "Atrucks", status: "connected" },
-    { name: "Pooling", status: "connected" },
-    { name: "Ozon", status: "inProgress" },
-    { name: "X5", status: "inProgress" },
-    { name: "Torg Trans", status: "inProgress" },
-    { name: "Газпромнефть снабжение", status: "inProgress" },
-    { name: "Умная Логистика", status: "inProgress" },
+    { name: "Atrucks", status: "connected" as const },
+    { name: "Pooling", status: "connected" as const },
+    { name: "Ozon", status: "soon" as const },
+    { name: "X5", status: "soon" as const },
+    { name: "Torg Trans", status: "soon" as const },
+    { name: "Газпромнефть снабжение", status: "soon" as const },
+    { name: "Умная Логистика", status: "soon" as const },
   ];
 
   return (
@@ -244,7 +245,7 @@ export function LandingPage() {
               <a href="#pricing" className="nav-link" style={{ fontSize: 14, color: C.muted, textDecoration: "none" }}>
                 Тарифы
               </a>
-              <a href="http://5.42.112.231/login" className="btn-primary" style={{
+              <a href="https://mestox.ru/login" className="btn-primary" style={{
                 background: C.cyan,
                 color: C.ink,
                 border: "none",
@@ -316,7 +317,7 @@ export function LandingPage() {
               maxWidth: 600,
               margin: "0 auto 40px",
             }}>
-              Единое рабочее пространство, где эспедитор управляет всеми транспортными системами без переключения между вкладками
+              Подключите TMS-системы, ищите грузы по маршруту через Навигатор, управляйте заказами — всё в одном месте
             </p>
 
             {/* Email Sign-up */}
@@ -343,17 +344,24 @@ export function LandingPage() {
                   outline: "none",
                 }}
               />
-              <button className="btn-hero" style={{
-                background: C.cyan,
-                color: C.ink,
-                border: "none",
-                padding: "14px 32px",
-                borderRadius: 10,
-                fontSize: 15,
-                fontWeight: 600,
-                cursor: "pointer",
-                whiteSpace: "nowrap",
-              }}
+              <button
+                className="btn-hero"
+                disabled={!email.trim()}
+                onClick={() => {
+                  window.location.href = `https://mestox.ru/register?email=${encodeURIComponent(email.trim())}`;
+                }}
+                style={{
+                  background: email.trim() ? C.cyan : "rgba(6,182,212,0.3)",
+                  color: email.trim() ? C.ink : "rgba(13,15,20,0.5)",
+                  border: "none",
+                  padding: "14px 32px",
+                  borderRadius: 10,
+                  fontSize: 15,
+                  fontWeight: 600,
+                  cursor: email.trim() ? "pointer" : "not-allowed",
+                  whiteSpace: "nowrap",
+                  transition: "all 0.2s",
+                }}
               >
                 Начать бесплатно
               </button>
@@ -463,7 +471,7 @@ export function LandingPage() {
                     color: C.white,
                     lineHeight: 1.6,
                   }}>
-                    Сообщество<br />выбирае приоритеты
+                    Сообщество<br />выбирает приоритеты
                   </div>
                 </div>
                 <div>
@@ -485,18 +493,23 @@ export function LandingPage() {
             </div>
 
             <div style={{
-              padding: "20px 32px",
-              background: "rgba(6,182,212,0.1)",
-              border: "1px solid rgba(6,182,212,0.25)",
-              borderRadius: 12,
-              fontSize: 14,
-              color: C.muted,
               display: "flex",
               alignItems: "center",
-              justifyContent: "space-between",
-              gap: 16,
+              justifyContent: "center",
+              gap: 32,
+              marginTop: 8,
             }}>
-              <span>Информация о сообществе будет сообщена позже</span>
+              <a
+                href="/community.html"
+                className="nav-link"
+                style={{
+                  fontSize: 14,
+                  color: C.muted,
+                  textDecoration: "none",
+                }}
+              >
+                Подробнее о сообществе →
+              </a>
               <a
                 href="https://t.me/+oZyghIJR2L8yYTAy"
                 target="_blank"
@@ -509,9 +522,9 @@ export function LandingPage() {
                   background: C.cyan,
                   color: C.ink,
                   border: "none",
-                  padding: "10px 20px",
-                  borderRadius: 8,
-                  fontSize: 13,
+                  padding: "12px 24px",
+                  borderRadius: 10,
+                  fontSize: 14,
                   fontWeight: 600,
                   textDecoration: "none",
                   cursor: "pointer",
@@ -558,7 +571,7 @@ export function LandingPage() {
                 margin: "0 auto",
                 lineHeight: 1.6,
               }}>
-                Не переключайтесь между системами. Работайте в едином пространстве.
+                Навигатор грузов, тендеры и заказы — в одной системе.
               </p>
             </div>
 
@@ -568,34 +581,24 @@ export function LandingPage() {
               gap: 24,
             }}>
               <FeatureCard
-                icon="🎯"
-                title="Единый интерфейс"
-                description="Все заявки, маршруты и документы из разных TMS в одном окне. Больше никаких вкладок."
+                icon="🗺️"
+                title="Навигатор грузов"
+                description="Ищите заявки по маршруту — укажите откуда и куда, задайте радиус поиска, и система найдёт подходящие грузы из всех подключённых TMS."
               />
               <FeatureCard
-                icon="🔄"
-                title="Синхронизация в реальном времени"
-                description="Изменения автоматически отражаются во всех подключенных системах. Данные всегда актуальны."
+                icon="📋"
+                title="Все тендеры в одном окне"
+                description="Аукционы и спот-заявки из всех TMS в единой таблице. Фильтры по городам, типу транспорта, цене и подрядчику."
+              />
+              <FeatureCard
+                icon="📦"
+                title="Управление заказами"
+                description="Отслеживайте статусы заказов от подтверждения до завершения. Назначайте водителей и транспорт прямо из системы."
               />
               <FeatureCard
                 icon="⚡"
-                title="Быстрое подключение"
-                description="Интеграция с TMS занимает минуты. API-ключи, OAuth или логин/пароль — выбирайте добный способ."
-              />
-              <FeatureCard
-                icon="📊"
-                title="Сводная аналитика"
-                description="Отчёты и метрики по всем системам сразу. Видьте полную картину без экспорта данных."
-              />
-              <FeatureCard
-                icon="🔔"
-                title="Умные уведомления"
-                description="Настройте оповещения о важных событиях из любой TMS. Не пропустите критичные изменения."
-              />
-              <FeatureCard
-                icon="🔒"
-                title="Безопасность"
-                description="Все данные защищены. Доступы к TMS хранятся в зашифрованном виде. Соответствие GDPR."
+                title="Быстрое подключение TMS"
+                description="Подключите любую из поддерживаемых TMS за минуту — просто введите логин и пароль. Данные синхронизируются автоматически."
               />
             </div>
           </div>
@@ -642,23 +645,39 @@ export function LandingPage() {
                   padding: "20px 24px",
                   display: "flex",
                   alignItems: "center",
+                  justifyContent: "space-between",
                   gap: 12,
                 }}
                 >
-                  <div style={{
-                    width: 8,
-                    height: 8,
-                    borderRadius: "50%",
-                    background: tms.status === "connected" ? "#22C55E" : "#FF9500",
-                    flexShrink: 0,
-                  }} />
-                  <span style={{
-                    fontSize: 14,
-                    fontWeight: 600,
-                    color: C.white,
-                  }}>
-                    {tms.name}
-                  </span>
+                  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                    {tms.status === "connected" ? (
+                      <span style={{ color: "#22C55E", fontSize: 16, flexShrink: 0 }}>✓</span>
+                    ) : (
+                      <div style={{
+                        width: 8,
+                        height: 8,
+                        borderRadius: "50%",
+                        background: "#FF9500",
+                        flexShrink: 0,
+                      }} />
+                    )}
+                    <span style={{
+                      fontSize: 14,
+                      fontWeight: 600,
+                      color: C.white,
+                    }}>
+                      {tms.name}
+                    </span>
+                  </div>
+                  {tms.status === "soon" && (
+                    <span style={{
+                      fontSize: 11,
+                      color: "#FF9500",
+                      fontWeight: 500,
+                    }}>
+                      скоро
+                    </span>
+                  )}
                 </div>
               ))}
               
@@ -801,10 +820,9 @@ export function LandingPage() {
                 <div style={{ marginBottom: 24 }}>
                   {[
                     "Неограниченное количество TMS",
-                    "Синхронизация в реальном времени",
-                    "Сводная аналитика",
-                    "Умные уведомления",
-                    "Техническая поддержка 24/7",
+                    "Навигатор грузов по маршруту",
+                    "Управление заказами и статусами",
+                    "Автосинхронизация данных",
                   ].map(feature => (
                     <div key={feature} style={{
                       display: "flex",
@@ -856,7 +874,6 @@ export function LandingPage() {
                     "Оплата идёт напрямую в каждую TMS",
                     "Без комиссий и наценок от mestoX",
                     "Ваши существующие тарифы остаются",
-                    "Управление подписками в одном месте",
                   ].map(feature => (
                     <div key={feature} style={{
                       display: "flex",
@@ -924,6 +941,8 @@ export function LandingPage() {
               <input
                 type="email"
                 placeholder="Ваш рабочий email"
+                value={ctaEmail}
+                onChange={(e) => setCtaEmail(e.target.value)}
                 style={{
                   flex: 1,
                   background: C.ink,
@@ -936,18 +955,25 @@ export function LandingPage() {
                 }}
                 className="input-focus"
               />
-              <button className="btn-cta" style={{
-                background: C.cyan,
-                color: C.ink,
-                border: "none",
-                padding: "16px 36px",
-                borderRadius: 10,
-                fontSize: 15,
-                fontWeight: 700,
-                cursor: "pointer",
-                whiteSpace: "nowrap",
-                boxShadow: `0 0 24px rgba(6,182,212,0.3)`,
-              }}
+              <button
+                className="btn-cta"
+                disabled={!ctaEmail.trim()}
+                onClick={() => {
+                  window.location.href = `https://mestox.ru/register?email=${encodeURIComponent(ctaEmail.trim())}`;
+                }}
+                style={{
+                  background: ctaEmail.trim() ? C.cyan : "rgba(6,182,212,0.3)",
+                  color: ctaEmail.trim() ? C.ink : "rgba(13,15,20,0.5)",
+                  border: "none",
+                  padding: "16px 36px",
+                  borderRadius: 10,
+                  fontSize: 15,
+                  fontWeight: 700,
+                  cursor: ctaEmail.trim() ? "pointer" : "not-allowed",
+                  whiteSpace: "nowrap",
+                  boxShadow: ctaEmail.trim() ? `0 0 24px rgba(6,182,212,0.3)` : "none",
+                  transition: "all 0.2s",
+                }}
               >
                 Создать аккаунт
               </button>
@@ -958,9 +984,9 @@ export function LandingPage() {
               color: C.muted,
             }}>
               Регистрируясь, вы соглашаетесь с{" "}
-              <a href="#" style={{ color: C.cyan, textDecoration: "none" }}>условиями использования</a>
+              <a href="/terms.html" style={{ color: C.cyan, textDecoration: "none" }}>условиями использования</a>
               {" "}и{" "}
-              <a href="#" style={{ color: C.cyan, textDecoration: "none" }}>политикой конфиденциальности</a>
+              <a href="/privacy.html" style={{ color: C.cyan, textDecoration: "none" }}>политикой обработки персональных данных</a>
             </div>
           </div>
         </section>
@@ -996,10 +1022,24 @@ export function LandingPage() {
               </div>
 
               <div>
-                <h4 style={{ fontSize: 13, fontWeight: 600, marginBottom: 16, color: C.white }}>
-                  Сообщество
-                </h4>
                 <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                  <a
+                    href="/community.html"
+                    className="footer-link"
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 4,
+                      fontSize: 13,
+                      color: C.muted,
+                      textDecoration: "none",
+                    }}
+                  >
+                    Описание сообщества{" "}
+                    <span style={{ fontWeight: 700, fontSize: 14, color: C.white, fontFamily: "'Inter', system-ui, sans-serif", letterSpacing: "-0.035em", position: "relative" }}>
+                      X<span style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: 3, height: 3, borderRadius: "50%", background: C.cyan }} />
+                    </span>
+                  </a>
                   <a
                     href="https://t.me/+oZyghIJR2L8yYTAy"
                     target="_blank"
@@ -1017,7 +1057,10 @@ export function LandingPage() {
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style={{ flexShrink: 0 }}>
                       <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
                     </svg>
-                    Сообщество mestoX
+                    Сообщество{" "}
+                    <span style={{ fontWeight: 700, fontSize: 14, color: C.white, fontFamily: "'Inter', system-ui, sans-serif", letterSpacing: "-0.035em", position: "relative" }}>
+                      X<span style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: 3, height: 3, borderRadius: "50%", background: C.cyan }} />
+                    </span>
                   </a>
                   <a
                     href="https://t.me/mestox_bot"
@@ -1036,7 +1079,15 @@ export function LandingPage() {
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style={{ flexShrink: 0 }}>
                       <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
                     </svg>
-                    Поддержка @mestox_bot
+                    <span style={{ display: "inline-flex", alignItems: "center", gap: 4 }}>
+                      Поддержка
+                      <svg width="18" height="18" viewBox="0 0 64 64" fill="none" style={{ flexShrink: 0 }}>
+                        <rect width="64" height="64" rx="12.8" fill="#0B0F14" />
+                        <line x1="15.36" y1="15.36" x2="48.64" y2="48.64" stroke="#FFFFFF" strokeWidth="7.36" strokeLinecap="round" />
+                        <line x1="48.64" y1="15.36" x2="15.36" y2="48.64" stroke="#FFFFFF" strokeWidth="7.36" strokeLinecap="round" />
+                        <circle cx="32" cy="32" r="4.608" fill="#06B6D4" />
+                      </svg>
+                    </span>
                   </a>
                 </div>
               </div>
